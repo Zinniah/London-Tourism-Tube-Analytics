@@ -46,3 +46,14 @@ JOIN attraction_stations ast ON a.attraction_id = ast.attraction_id
 JOIN stations s ON ast.station_id = s.station_id
 GROUP BY s.zone
 ORDER BY s.zone ASC;
+-- Query 4: Estimate Travel Cost to Attractions Based on TfL Zone Fares
+SELECT 
+    a.attraction_name,
+    s.station_name,
+    s.zone AS station_zone,
+    f.peak_fare_gbp AS estimated_peak_fare,
+    f.off_peak_fare_gbp AS estimated_off_peak_fare
+FROM attractions a
+JOIN attraction_stations ast ON a.attraction_id = ast.attraction_id
+JOIN stations s ON ast.station_id = s.station_id
+JOIN fare_rates f ON s.zone = f.zone_from AND f.zone_to = s.zone;
