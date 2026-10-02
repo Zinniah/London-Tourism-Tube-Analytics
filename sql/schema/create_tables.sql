@@ -58,3 +58,15 @@ INSERT INTO attraction_stations (attraction_id, station_id, walking_distance_met
 (3, 'STN_03', 400), -- Tower of London -> London Bridge (or Tower Hill)
 (4, 'STN_04', 150), -- London Eye -> Westminster
 (5, 'STN_05', 50);  -- Covent Garden Market -> Covent Garden
+-- 4. Fare Rates Table (TfL Oyster / Contactless Single Fares)
+CREATE TABLE fare_rates (
+    zone_from INT,
+    zone_to INT,
+    peak_fare_gbp DECIMAL(4,2),
+    off_peak_fare_gbp DECIMAL(4,2)
+);
+
+INSERT INTO fare_rates (zone_from, zone_to, peak_fare_gbp, off_peak_fare_gbp) VALUES
+(1, 1, 2.80, 2.70), -- Central Zone travel
+(1, 2, 3.40, 2.80),
+(2, 2, 3.40, 2.80);
